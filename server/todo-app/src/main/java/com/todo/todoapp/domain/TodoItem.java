@@ -1,9 +1,48 @@
 package com.todo.todoapp.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class TodoItem {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String task;
-    private boolean isDone;
+    private Integer isDone;
+
+    /**
+     * @param task
+     * @param isDone
+     */
+
+    public TodoItem(String task, Integer isDone) {
+
+        this.task = task;
+        this.isDone = isDone;
+    }
+
+    /**
+     * 
+     */
+    public TodoItem() {
+    }
+
+    /**
+     * @param isDone the isDone to set
+     */
+    public void setIsDone(Integer isDone) {
+        this.isDone = isDone;
+    }
+
+    /**
+     * @return the isDone
+     */
+    public Integer getIsDone() {
+        return isDone;
+    }
 
     /**
      * @return the id
@@ -33,18 +72,19 @@ public class TodoItem {
         this.task = task;
     }
 
-    /**
-     * @return the isDone
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#toString()
      */
-    public boolean isDone() {
-        return isDone;
+
+    @Override
+    public String toString() {
+        return "TodoItem [id=" + id + ", isDone=" + isDone + ", task=" + task + "]";
     }
 
     /**
-     * @param isDone the isDone to set
+     * @return the isDone
      */
-    public void setDone(boolean isDone) {
-        this.isDone = isDone;
-    }
 
 }

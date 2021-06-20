@@ -36,7 +36,6 @@ public class TodoController {
     @PostMapping("/api/todoItems")
     public ResponseEntity<?> createNewTodoItem() {
         TodoItem todoItem = todoService.createTodoItem();
-        System.out.println(todoItem.getTask());
         return ResponseEntity.ok(todoItem);
     }
 
@@ -49,7 +48,6 @@ public class TodoController {
     @DeleteMapping("/api/todoItems/{id}")
     public ResponseEntity<?> deleteTodoItem(@PathVariable Integer id) {
         todoService.deleteTodoItem(id);
-
         return ResponseEntity.ok("ok");
     }
 

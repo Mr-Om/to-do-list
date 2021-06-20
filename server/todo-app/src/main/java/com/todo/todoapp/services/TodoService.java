@@ -15,33 +15,29 @@ public class TodoService {
     private TodoRepository todorepo;
 
     public List<TodoItem> fetchAllTodoItems() {
-        return todorepo.fetchAllTodoItems();
+        return (List<TodoItem>) todorepo.findAll();
     }
 
     public TodoItem updateTodoItem(Integer id, TodoItem todoItem) {
-        Optional<TodoItem> todoOpt = todorepo.fetchAllTodoItems().stream().filter(item -> item.getId().equals(id))
-                .findAny();
-
-        if (todoOpt.isPresent()) {
-            TodoItem item = todoOpt.get();
-            item.setDone(todoItem.isDone());
-            item.setTask(todoItem.getTask());
-            return item;
+        Optional<TodoItem> found = todorepo.findById(id);
+        System.out.println(found.get());
+        if (found.isPresent()) {
+            found.get().setIsDone(todoItem.getIsDone());
+            found.get().setTask(todoItem.getTask());
+            todorepo.save(found.get());
+            return found.get();
         }
         return null;
     }
 
     public TodoItem createTodoItem() {
-        TodoItem newTodoItem = new TodoItem();
-        newTodoItem.setDone(false);
+        TodoItem newTodoItem = new TodoItem("Task", 0);
         newTodoItem = todorepo.save(newTodoItem);
-        newTodoItem.setTask("Task #" + newTodoItem.getId());
         return newTodoItem;
     }
 
     public void deleteTodoItem(Integer id) {
-        todorepo.deleteitem(id);
-
+        todorepo.deleteById(id);
     }
 
 }
