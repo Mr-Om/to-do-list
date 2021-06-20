@@ -1,0 +1,38 @@
+body {
+  background-color: grey;
+}
+.parent {
+  width: 100vw;
+  height: 100vh;
+}
+
+.list__container {
+  /* border: 3px solid gold; */
+  width: 50vw;
+  height: 50vh;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: whitesmoke;
+}
+
+.button {
+  position: absolute;
+  top: 1rem;
+  bottom: 0;
+  left: 8.5rem;
+  right: 0;
+  margin: auto;
+}
+
+.check {
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+.recycle-bin {
+  position: relative;
+}
